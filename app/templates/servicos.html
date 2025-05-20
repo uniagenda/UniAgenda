@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4 text-center">Gerenciar Serviços</h2>
+<form method="POST" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="nome" class="form-control" placeholder="Nome do serviço" required>
+        <button type="submit" class="btn btn-success">Adicionar</button>
+    </div>
+</form>
+<ul class="list-group">
+    {% for s in services %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ s.name }}
+        <a href="{{ url_for('main.excluir_servico', id=s.id) }}" class="btn btn-sm btn-danger">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary mt-4 w-100">Voltar</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4 text-center">Cadastro de Cliente</h2>
+<form method="POST">
+    <input type="text" name="full_name" placeholder="Nome completo" class="form-control mb-2" required>
+    <input type="text" name="phone" placeholder="Telefone" class="form-control mb-2" required>
+    <input type="email" name="email" placeholder="E-mail" class="form-control mb-2" required>
+    <input type="password" name="password" placeholder="Senha" class="form-control mb-2" required>
+    <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+</form>
+{% endblock %}

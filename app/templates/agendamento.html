@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4 text-center">Agendar Serviço</h2>
+<form method="POST">
+    <label for="date" class="form-label">Data</label>
+    <input type="date" name="date" class="form-control mb-2" required>
+    <label for="time" class="form-label">Hora</label>
+    <input type="time" name="time" class="form-control mb-2" required>
+    <label for="service" class="form-label">Serviço</label>
+    <select name="service" class="form-select mb-3" required>
+        <option value="">-- Selecione --</option>
+        {% for s in services %}
+        <option value="{{ s.id }}">{{ s.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-success w-100">Confirmar Agendamento</button>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block content %}
+<h2 class="mb-4 text-center">Meus Agendamentos</h2>
+<ul class="list-group">
+    {% for a in appointments %}
+    <li class="list-group-item">
+        Data: {{ a.date|formata_data }} às {{ a.time }} - Serviço: {{ a.service.name }}
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('main.agendar') }}" class="btn btn-primary mt-4 w-100">Novo Agendamento</a>
+<a href="{{ url_for('main.logout') }}" class="btn btn-secondary mt-2 w-100">Sair</a>
+{% endblock %}

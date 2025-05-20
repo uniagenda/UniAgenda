@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4 text-center">Agenda de Clientes</h2>
+<ul class="list-group">
+    {% for a in appointments %}
+    <li class="list-group-item">
+        {{ a.date|formata_data }} {{ a.time }} - Cliente: {{ a.user.full_name }} ({{ a.user.phone }}) - Serviço: {{ a.service.name }}
+    </li>
+    {% endfor %}
+</ul>
+<div class="mt-4 d-grid gap-2">
+  <a href="{{ url_for('main.servicos') }}" class="btn btn-outline-primary">Gerenciar Serviços</a>
+  <a href="{{ url_for('main.logout') }}" class="btn btn-outline-secondary">Sair</a>
+</div>
+{% endblock %}

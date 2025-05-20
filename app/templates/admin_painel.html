@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mb-4">Painel do Administrador</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th><th>Email</th><th>Telefone</th><th>Tipo</th><th>Status</th><th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users %}
+        <tr>
+            <td>{{ u.full_name }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ "Empresário" if u.is_admin else "Cliente" }}</td>
+            <td>{{ "Bloqueado" if u.bloqueado else "Ativo" }}</td>
+            <td>
+                {% if u.bloqueado %}
+                    <a href="{{ url_for('main.admin_desbloquear', id=u.id) }}" class="btn btn-sm btn-success">Desbloquear</a>
+                {% else %}
+                    <a href="{{ url_for('main.admin_bloquear', id=u.id) }}" class="btn btn-sm btn-warning">Bloquear</a>
+                {% endif %}
+                <a href="{{ url_for('main.admin_excluir', id=u.id) }}" class="btn btn-sm btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
